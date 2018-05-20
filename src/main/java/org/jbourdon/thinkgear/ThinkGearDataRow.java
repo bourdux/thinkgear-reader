@@ -12,6 +12,8 @@ public class ThinkGearDataRow {
 
     private static final byte EXCODE = 0x55;
 
+    private final long timestamp;
+
     private final int poorSignalQuality;
     private final int attention;
     private final int meditation;
@@ -24,6 +26,10 @@ public class ThinkGearDataRow {
     private final int highBeta;
     private final int lowGamma;
     private final int midGamma;
+
+    public long getTimestamp() {
+        return timestamp;
+    }
 
     public int getAttention() {
         return attention;
@@ -66,6 +72,7 @@ public class ThinkGearDataRow {
     }
 
     public ThinkGearDataRow(int poorSignalQuality, int attention, int meditation, int delta, int theta, int lowAlpha, int highAlpha, int lowBeta, int highBeta, int lowGamma, int midGamma) {
+        this.timestamp = System.currentTimeMillis();
         this.poorSignalQuality = poorSignalQuality;
         this.attention = attention;
         this.meditation = meditation;
@@ -184,7 +191,8 @@ public class ThinkGearDataRow {
     @Override
     public String toString() {
         return "ThinkGearDataRow{" +
-                "poorSignalQuality=" + poorSignalQuality +
+                "timestamp=" + timestamp +
+                ", poorSignalQuality=" + poorSignalQuality +
                 ", attention=" + attention +
                 ", meditation=" + meditation +
                 ", delta=" + delta +
